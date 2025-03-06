@@ -65,6 +65,6 @@ public class GeckoLayerMaidBackItem<T extends Mob, R extends IGeoEntityRenderer<
         }
 
         // TACZ 背部枪械渲染
-        TacCompat.renderBackGun(stack, model, maid, matrixStack, bufferIn, packedLightIn);
+        TacCompat.renderBackGun(stack, model, maid, matrixStack, buffer, packedLight);
     }
 }
