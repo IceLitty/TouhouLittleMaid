@@ -1,10 +1,7 @@
 package com.github.tartaricacid.touhoulittlemaid.compat.cloth;
 
 import com.github.tartaricacid.touhoulittlemaid.api.event.client.AddClothConfigEvent;
-import com.github.tartaricacid.touhoulittlemaid.config.subconfig.ChairConfig;
-import com.github.tartaricacid.touhoulittlemaid.config.subconfig.MaidConfig;
-import com.github.tartaricacid.touhoulittlemaid.config.subconfig.MiscConfig;
-import com.github.tartaricacid.touhoulittlemaid.config.subconfig.VanillaConfig;
+import com.github.tartaricacid.touhoulittlemaid.config.subconfig.*;
 import com.github.tartaricacid.touhoulittlemaid.event.MaidMealRegConfigEvent;
 import com.google.common.collect.Lists;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -33,6 +30,7 @@ public class MenuIntegration {
         chairConfig(root, entryBuilder);
         miscConfig(root, entryBuilder);
         vanillaConfig(root, entryBuilder);
+        renderConfig(root, entryBuilder);
         GlobalAIIntegration.aiChat(root, entryBuilder);
         NeoForge.EVENT_BUS.post(new AddClothConfigEvent(root, entryBuilder));
         return root;
@@ -411,6 +409,82 @@ public class MenuIntegration {
                 .setSaveConsumer(b -> {
                     VanillaConfig.REPLACE_XP_BOTTLE_TEXTURE.set(b);
                     VanillaConfig.REPLACE_XP_BOTTLE_TEXTURE.save();
+                }).build());
+    }
+
+    private static void renderConfig(ConfigBuilder root, ConfigEntryBuilder entryBuilder) {
+        ConfigCategory render = root.getOrCreateCategory(Component.translatable("config.touhou_little_maid.render"));
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_compass_tip"), RenderConfig.ENABLE_COMPASS_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_COMPASS_TIP.set(value);
+                    RenderConfig.ENABLE_COMPASS_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_golden_apple_tip"), RenderConfig.ENABLE_GOLDEN_APPLE_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_GOLDEN_APPLE_TIP.set(value);
+                    RenderConfig.ENABLE_GOLDEN_APPLE_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_potion_tip"), RenderConfig.ENABLE_POTION_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_POTION_TIP.set(value);
+                    RenderConfig.ENABLE_POTION_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_milk_bucket_tip"), RenderConfig.ENABLE_MILK_BUCKET_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_MILK_BUCKET_TIP.set(value);
+                    RenderConfig.ENABLE_MILK_BUCKET_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_script_book_tip"), RenderConfig.ENABLE_SCRIPT_BOOK_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_SCRIPT_BOOK_TIP.set(value);
+                    RenderConfig.ENABLE_SCRIPT_BOOK_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_glass_bottle_tip"), RenderConfig.ENABLE_GLASS_BOTTLE_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_GLASS_BOTTLE_TIP.set(value);
+                    RenderConfig.ENABLE_GLASS_BOTTLE_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_name_tag_tip"), RenderConfig.ENABLE_NAME_TAG_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_NAME_TAG_TIP.set(value);
+                    RenderConfig.ENABLE_NAME_TAG_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_lead_tip"), RenderConfig.ENABLE_LEAD_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_LEAD_TIP.set(value);
+                    RenderConfig.ENABLE_LEAD_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_saddle_tip"), RenderConfig.ENABLE_SADDLE_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_SADDLE_TIP.set(value);
+                    RenderConfig.ENABLE_SADDLE_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_shears_tip"), RenderConfig.ENABLE_SHEARS_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_SHEARS_TIP.set(value);
+                    RenderConfig.ENABLE_SHEARS_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_ysm_roulette_tip"), RenderConfig.ENABLE_YSM_ROULETTE_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_YSM_ROULETTE_TIP.set(value);
+                    RenderConfig.ENABLE_YSM_ROULETTE_TIP.save();
+                }).build());
+
+        render.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.touhou_little_maid.render.enable_ai_chat_tip"), RenderConfig.ENABLE_AI_CHAT_TIP.get())
+                .setDefaultValue(true).setSaveConsumer(value -> {
+                    RenderConfig.ENABLE_AI_CHAT_TIP.set(value);
+                    RenderConfig.ENABLE_AI_CHAT_TIP.save();
                 }).build());
     }
 
